@@ -21,17 +21,18 @@ public class PhoneNumberServiceImpl implements PhoneNumberServiceI {
         this.commercialRepository = commercialRepository;
     }
     @Override
-    public void addPhoneNumberToClient(PhoneNumber phoneNumber, Long id) {
+    public PhoneNumber addPhoneNumberToClient(PhoneNumber phoneNumber, Long id) {
         Client client=clientRepository.findById(id).orElseThrow(()->new RuntimeException("client not found"));
-        if (client.getPhoneNumbers().size()>2){
+        if (client.getPhoneNumbers().size()<2){
             client.getPhoneNumbers().add(phoneNumber);
-            phoneNumberRepository.save(phoneNumber);
+            phoneNumber.setClient(client);
             clientRepository.save(client);
-        }
+        }else throw new RuntimeException("cant add more than 2 numbers");
+        return phoneNumber;
     }
     @Override
-    public void addPhoneNumberToCommercial(PhoneNumber phoneNumber, Long id) {
-        Commercial commercial =commercialRepository.findById(id).orElseThrow(()->new RuntimeException("commercial not found"));
+    public void addPhoneNumberToCommercial(PhoneNumber phoneNumber, Long  commercialId) {
+        Commercial commercial =commercialRepository.findById(commercialId).orElseThrow(()->new RuntimeException("commercial not found"));
         commercial.getPhoneNumber().add(phoneNumber);
         phoneNumberRepository.save(phoneNumber);
     }

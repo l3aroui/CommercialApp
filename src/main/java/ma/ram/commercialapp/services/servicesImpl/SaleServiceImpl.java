@@ -37,6 +37,7 @@ public class SaleServiceImpl implements SaleServiceI {
         commercial.getSales().add(sale);
         sale.setCommercial(commercial);
         sale.setClient(client);
+        sale.setDateOfSale(LocalDateTime.now());
         return saleRepository.save(sale);
     }
     @Override

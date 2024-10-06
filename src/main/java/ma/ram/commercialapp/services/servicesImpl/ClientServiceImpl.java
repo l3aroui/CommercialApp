@@ -29,12 +29,13 @@ public class ClientServiceImpl implements ClientServiceI {
 
     @Override
     @Transactional
-    public Client addClient(Client client, Long commercialId) {
-        Commercial commercial=commercialRepository.findById(commercialId).orElseThrow(()->new RuntimeException("commercial not found"));
-        if (!commercial.getClients().contains(client)){
+    public Client addClient(Client client, String commercialId) {
+        Commercial commercial=commercialRepository.findByKeycloakId(commercialId).orElseThrow(()->new RuntimeException("commercial not found"));
+        if (commercial.getClients().contains(client)){
             throw  new RuntimeException("Client already exist");
         }
         commercial.getClients().add(client);
+        client.setCommercial(commercial);
         return clientRepository.save(client);
     }
     @Override
@@ -57,7 +58,6 @@ public class ClientServiceImpl implements ClientServiceI {
     public Client viewClient(Long id) {
         return clientRepository.findById(id).orElseThrow(() -> new RuntimeException("user not exist"));
     }
-
     @Override
     public void addClientToCategory(Long idCategory, Long idClient, Long idCommercial) {
         Commercial commercial=commercialRepository.findById(idCommercial).orElseThrow(()->new RuntimeException("commercial not found"));
@@ -70,5 +70,4 @@ public class ClientServiceImpl implements ClientServiceI {
             throw new RuntimeException("This client or category is not available to you");
         }
     }
-
 }

@@ -1,41 +1,39 @@
 package ma.ram.commercialapp.controllers;
 
+import lombok.RequiredArgsConstructor;
 import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.repositories.CommercialRepository;
+import ma.ram.commercialapp.entities.PhoneNumber;
+
 import ma.ram.commercialapp.services.ClientServiceI;
-import org.springframework.beans.factory.annotation.Autowired;
+import ma.ram.commercialapp.services.CommercialServiceI;
+import ma.ram.commercialapp.services.PhoneNumberServiceI;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import java.net.URI;
+
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/v1/client")
+@RequiredArgsConstructor
 public class ClientController {
     private final ClientServiceI clientService;
-    private final CommercialRepository commercialRepository;
-    @Autowired
-    public ClientController(ClientServiceI clientService, CommercialRepository commercialRepository) {
-        this.clientService = clientService;
-        this.commercialRepository = commercialRepository;
-    }
+    private final CommercialServiceI commercialServiceI;
+    private final PhoneNumberServiceI phoneNumberServiceI;
     @GetMapping
-    public ResponseEntity<Page<Client>> clientList(@AuthenticationPrincipal UserDetails userDetails,
-                                                   @RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<Page<Client>> clientList(@RequestParam(defaultValue = "0") int page,
                                                    @RequestParam(defaultValue = "10") int size){
         Pageable pageable= PageRequest.of(page,size);
-        Long IdCommercial=commercialRepository.findByUsername(userDetails.getUsername()).getId();
-        return ResponseEntity.ok(clientService.viewAllCommercialClients(IdCommercial,pageable));
+
+        return ResponseEntity.ok(clientService.viewAllCommercialClients(commercialServiceI.userId(),pageable));
     }
     @PostMapping
-    public ResponseEntity<Client> addClient(@RequestBody Client client,@AuthenticationPrincipal  UserDetails userDetails){
-        Long idCommercial=commercialRepository.findByUsername(userDetails.getUsername()).getId();
-        return ResponseEntity.created(URI.create("/api/client"+client.getId())).body(clientService.addClient(client,idCommercial));
+    public ResponseEntity<Client> addClient(@RequestBody Client client){
+        return ResponseEntity.created(URI.create("/api/v1/client"+client.getId())).body(clientService.addClient(client,commercialServiceI.userKeycloakId()));
     }
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Client> showClientById(@PathVariable Long id){
         return ResponseEntity.ok(clientService.viewClient(id));
     }
@@ -47,8 +45,22 @@ public class ClientController {
     public ResponseEntity<Client> editClient(@RequestBody Client client){
          return ResponseEntity.ok(clientService.editClient(client));
     }
-    @PostMapping("addToCategory")
-    public void addClientToCategory(@RequestParam Long idCategory,@AuthenticationPrincipal  UserDetails userDetails,@RequestParam Long idClient){
-        clientService.addClientToCategory(idCategory,idClient,commercialRepository.findByUsername(userDetails.getUsername()).getId());
+    @PostMapping("/addToCategory")
+    public void addClientToCategory(@RequestParam Long idCategory,@RequestParam Long idClient){
+        clientService.addClientToCategory(idCategory,idClient,commercialServiceI.userId());
+    }
+    @PostMapping("/addPhoneNumber/{id}")
+    public ResponseEntity<PhoneNumber> addPhoneNumberToClient(@RequestBody PhoneNumber phoneNumber,@PathVariable("id") Long clientId){
+        return ResponseEntity.ok(phoneNumberServiceI.addPhoneNumberToClient(phoneNumber,clientId));
+    }
+
+    @PostMapping("/editPhone")
+    public void updatePhoneNumber(@RequestBody PhoneNumber phoneNumber){
+        phoneNumberServiceI.UpdatePhoneNumber(phoneNumber);
+    }
+
+    @DeleteMapping("/deleteNumber/{id}")
+    public void delete(@PathVariable("id") Long phoneId){
+        phoneNumberServiceI.deletePhoneNumber(phoneId);
     }
 }

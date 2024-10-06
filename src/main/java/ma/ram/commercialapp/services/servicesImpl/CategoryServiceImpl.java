@@ -26,6 +26,7 @@ public class CategoryServiceImpl implements CategoryServiceI {
 
     @Override
     public Category addCategory(Category category, Long idCommercial) {
+
         Commercial commercial=commercialRepository.findById(idCommercial).orElseThrow(()->new RuntimeException("commercial not found"));
         commercial.getCategories().add(category);
         return categoryRepository.save(category);

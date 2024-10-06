@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ClientServiceI {
-    Client addClient(Client client, Long commercialId);
+    Client addClient(Client client, String commercialId);
     Client editClient(Client client);
     void deleteClient(Long id);
     Page<Client> viewAllCommercialClients(Long idCommercial, Pageable pageable);
