@@ -1,14 +1,13 @@
 package ma.ram.commercialapp.services.servicesImpl;
 
-import ma.ram.commercialapp.entities.Category;
-import ma.ram.commercialapp.entities.Commercial;
+import ma.ram.commercialapp.entities.commercial.Category;
+import ma.ram.commercialapp.entities.commercial.Commercial;
 import ma.ram.commercialapp.repositories.CategoryRepository;
 import ma.ram.commercialapp.repositories.CommercialRepository;
 import ma.ram.commercialapp.services.CategoryServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 @Service

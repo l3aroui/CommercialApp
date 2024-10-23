@@ -17,10 +17,20 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // JWT tokens are stateless
                 .authorizeHttpRequests(ar -> ar
-                        .requestMatchers("/api/public/**").permitAll() // Expose some endpoints without authentication
+                        .requestMatchers("/api/public/**","/auth/**",
+                                "/v2/api-docs",
+                                "/v3/api-docs",
+                                "/v3/api-docs/**",
+                                "/swagger-resources",
+                                "/swagger-resources/**",
+                                "/configuration/ui",
+                                "/configuration/security",
+                                "/swagger-ui/**",
+                                "/webjars/**",
+                                "/swagger-ui/**").permitAll() // Expose some endpoints without authentication
                         .anyRequest().authenticated() // All other requests require authentication
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt()) // Enable JWT token validation
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt())// Enable JWT token validation
                 .build();
     }
 }

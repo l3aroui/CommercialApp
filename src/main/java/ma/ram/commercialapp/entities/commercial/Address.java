@@ -1,23 +1,28 @@
-package ma.ram.commercialapp.entities;
+package ma.ram.commercialapp.entities.commercial;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter @Builder
+@Builder
+@Getter
+@Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Category {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String categoryName;
-    private String categoryDescription;
+    private String country="morocco";
+    private String city;
+    private String district;
+    private String postalCode;
     @ManyToOne
     @JoinColumn(name = "commercial_id")
     private Commercial commercial;
-    @OneToMany(orphanRemoval = true,cascade = CascadeType.ALL)
-    private List<Client> clients;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 }

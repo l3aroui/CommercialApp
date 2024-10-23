@@ -1,7 +1,8 @@
-package ma.ram.commercialapp.entities;
+package ma.ram.commercialapp.entities.commercial;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.List;
 
 

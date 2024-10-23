@@ -1,7 +1,7 @@
 package ma.ram.commercialapp.services.servicesImpl;
-import ma.ram.commercialapp.entities.Address;
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.Commercial;
+import ma.ram.commercialapp.entities.commercial.Address;
+import ma.ram.commercialapp.entities.commercial.Client;
+import ma.ram.commercialapp.entities.commercial.Commercial;
 import ma.ram.commercialapp.repositories.AddressRepository;
 import ma.ram.commercialapp.repositories.ClientRepository;
 import ma.ram.commercialapp.repositories.CommercialRepository;

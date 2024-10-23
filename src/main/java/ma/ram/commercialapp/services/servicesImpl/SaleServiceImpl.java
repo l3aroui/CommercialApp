@@ -1,9 +1,9 @@
 package ma.ram.commercialapp.services.servicesImpl;
 
 import jakarta.persistence.EntityNotFoundException;
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.Commercial;
-import ma.ram.commercialapp.entities.Sale;
+import ma.ram.commercialapp.entities.commercial.Client;
+import ma.ram.commercialapp.entities.commercial.Commercial;
+import ma.ram.commercialapp.entities.commercial.Sale;
 import ma.ram.commercialapp.repositories.ClientRepository;
 import ma.ram.commercialapp.repositories.CommercialRepository;
 import ma.ram.commercialapp.repositories.SaleRepository;

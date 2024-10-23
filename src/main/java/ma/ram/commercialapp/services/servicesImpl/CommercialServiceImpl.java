@@ -1,12 +1,10 @@
 package ma.ram.commercialapp.services.servicesImpl;
 
-import ma.ram.commercialapp.entities.Commercial;
+import ma.ram.commercialapp.entities.commercial.Commercial;
 import ma.ram.commercialapp.repositories.CommercialRepository;
 import ma.ram.commercialapp.services.CommercialServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.oidc.OidcIdToken;
-import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 

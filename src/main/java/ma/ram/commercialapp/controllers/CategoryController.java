@@ -1,5 +1,5 @@
 package ma.ram.commercialapp.controllers;
-import ma.ram.commercialapp.entities.Category;
+import ma.ram.commercialapp.entities.commercial.Category;
 
 import ma.ram.commercialapp.services.CategoryServiceI;
 import ma.ram.commercialapp.services.CommercialServiceI;

@@ -1,29 +1,33 @@
-package ma.ram.commercialapp.entities;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+package ma.ram.commercialapp.entities.commercial;
+
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
 @Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Address {
+public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String country="morocco";
-    private String city;
-    private String district;
-    private String postalCode;
-    @ManyToOne
-    @JoinColumn(name = "commercial_id")
-    private Commercial commercial;
+    private LocalDateTime dateOfSale;
+    private double price;
+    private int quantity;
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     private Client client;
+    @ManyToOne
+    @JoinColumn(name = "commercial_id")
+    @JsonIgnore
+    private Commercial commercial;
 }

@@ -1,6 +1,6 @@
 package ma.ram.commercialapp.services;
 
-import ma.ram.commercialapp.entities.Category;
+import ma.ram.commercialapp.entities.commercial.Category;
 
 import java.util.List;
 

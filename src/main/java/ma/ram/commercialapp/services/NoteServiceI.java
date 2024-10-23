@@ -1,5 +1,5 @@
 package ma.ram.commercialapp.services;
-import ma.ram.commercialapp.entities.Note;
+import ma.ram.commercialapp.entities.commercial.Note;
 
 import java.util.List;
 

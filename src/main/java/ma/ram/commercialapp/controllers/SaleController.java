@@ -1,5 +1,5 @@
 package ma.ram.commercialapp.controllers;
-import ma.ram.commercialapp.entities.Sale;
+import ma.ram.commercialapp.entities.commercial.Sale;
 import ma.ram.commercialapp.services.CommercialServiceI;
 import ma.ram.commercialapp.services.SaleServiceI;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,6 @@
 package ma.ram.commercialapp.services;
 
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.Commercial;
-import ma.ram.commercialapp.entities.Sale;
+import ma.ram.commercialapp.entities.commercial.Sale;
 
 import java.util.List;
 

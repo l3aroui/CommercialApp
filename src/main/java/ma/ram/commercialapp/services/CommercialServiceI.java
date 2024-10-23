@@ -1,7 +1,7 @@
 package ma.ram.commercialapp.services;
 
 
-import ma.ram.commercialapp.entities.Commercial;
+import ma.ram.commercialapp.entities.commercial.Commercial;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

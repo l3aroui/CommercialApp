@@ -2,7 +2,7 @@ package ma.ram.commercialapp.controllers;
 
 
 
-import ma.ram.commercialapp.entities.Commercial;
+import ma.ram.commercialapp.entities.commercial.Commercial;
 import ma.ram.commercialapp.services.CommercialServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

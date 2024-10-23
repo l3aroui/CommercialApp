@@ -1,8 +1,8 @@
 package ma.ram.commercialapp.controllers;
 
 import lombok.RequiredArgsConstructor;
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.PhoneNumber;
+import ma.ram.commercialapp.entities.commercial.Client;
+import ma.ram.commercialapp.entities.commercial.PhoneNumber;
 
 import ma.ram.commercialapp.services.ClientServiceI;
 import ma.ram.commercialapp.services.CommercialServiceI;

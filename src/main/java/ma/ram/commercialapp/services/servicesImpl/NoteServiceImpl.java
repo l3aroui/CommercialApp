@@ -1,7 +1,7 @@
 package ma.ram.commercialapp.services.servicesImpl;
 
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.Note;
+import ma.ram.commercialapp.entities.commercial.Client;
+import ma.ram.commercialapp.entities.commercial.Note;
 import ma.ram.commercialapp.repositories.ClientRepository;
 import ma.ram.commercialapp.repositories.NoteRepository;
 import ma.ram.commercialapp.services.NoteServiceI;

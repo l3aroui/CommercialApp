@@ -1,7 +1,6 @@
 package ma.ram.commercialapp.repositories;
 
-import ma.ram.commercialapp.entities.Commercial;
-import ma.ram.commercialapp.entities.Note;
+import ma.ram.commercialapp.entities.commercial.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

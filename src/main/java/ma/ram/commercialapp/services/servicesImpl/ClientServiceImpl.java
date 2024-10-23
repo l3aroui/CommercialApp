@@ -1,7 +1,7 @@
 package ma.ram.commercialapp.services.servicesImpl;
-import ma.ram.commercialapp.entities.Category;
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.Commercial;
+import ma.ram.commercialapp.entities.commercial.Category;
+import ma.ram.commercialapp.entities.commercial.Client;
+import ma.ram.commercialapp.entities.commercial.Commercial;
 import ma.ram.commercialapp.repositories.CategoryRepository;
 import ma.ram.commercialapp.repositories.ClientRepository;
 import ma.ram.commercialapp.repositories.CommercialRepository;
@@ -12,8 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientServiceI {

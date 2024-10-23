@@ -1,6 +1,6 @@
 package ma.ram.commercialapp.services;
 
-import ma.ram.commercialapp.entities.Address;
+import ma.ram.commercialapp.entities.commercial.Address;
 
 public interface AddressServiceI {
     void addAddressForClient(Address address,Long id);

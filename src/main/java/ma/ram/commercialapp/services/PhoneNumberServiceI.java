@@ -1,8 +1,7 @@
 package ma.ram.commercialapp.services;
 
 
-import ma.ram.commercialapp.entities.Client;
-import ma.ram.commercialapp.entities.PhoneNumber;
+import ma.ram.commercialapp.entities.commercial.PhoneNumber;
 
 public interface PhoneNumberServiceI {
     PhoneNumber addPhoneNumberToClient(PhoneNumber phoneNumber, Long id);

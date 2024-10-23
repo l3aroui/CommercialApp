@@ -1,11 +1,8 @@
 package ma.ram.commercialapp.services;
 
-import ma.ram.commercialapp.entities.Client;
+import ma.ram.commercialapp.entities.commercial.Client;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-
-import java.util.List;
 
 public interface ClientServiceI {
     Client addClient(Client client, String commercialId);

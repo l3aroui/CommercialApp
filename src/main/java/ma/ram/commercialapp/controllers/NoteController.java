@@ -1,6 +1,6 @@
 package ma.ram.commercialapp.controllers;
 
-import ma.ram.commercialapp.entities.Note;
+import ma.ram.commercialapp.entities.commercial.Note;
 import ma.ram.commercialapp.services.NoteServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
